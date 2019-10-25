@@ -1,0 +1,7 @@
+{% extends "management/base.html" %}
+{% block content %}
+	{% for x in table %}
+		{{ x.name}}
+	    {{ x.studentId}}
+	{% endfor %}
+{% endblock content %}
