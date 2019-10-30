@@ -1,0 +1,40 @@
+{% extends "management/base.html" %}
+{% load render_table from django_tables2 %}
+
+ {% block content %}
+ 	<head> Select Department </head>
+	<form method="post">{% csrf_token %}
+		 <select name = 'DepartmentFilter'>
+		 	<option value='ALL'> ALL</option>
+		 	{% for dept in depts %}
+		  	<option value={{dept}}>{{dept}}</option>
+			{%endfor%}
+
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+
+	<b> Showing Courses from {{request.session.DepartmentFilter}} Department </b> 
+ 	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	       <th>Course name</th>
+	      <th>Course Id</th>
+	      <th>Instructor Id</th>
+	      <th>Instructor Name</th>
+	   </tr>
+	 </thead>
+	 <tbody>
+	   {% for course in courses %}
+	    <tr>
+	      <td>{{ course.course_name }}</td>
+	      <td>{{ course.courseId }}</td>
+	      <td>{{ course.instructor }}</td>
+	      <td>{{ course.name }}</td>
+	      <td> <a href = "{% url 'course_students' courseId=course.courseId %}">Get Students </a> </td>
+	   </tr>
+	 {% endfor %}
+	</tbody>
+	</table>
+
+{% endblock content %}

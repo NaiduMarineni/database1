@@ -17,17 +17,17 @@
 	<header class="site-header">
 	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
 	    <div class="container">
-	      <a class="navbar-brand mr-4" href="/">College Information Database</a>
+	      <a class="navbar-brand mr-4" href="/management/home">College Information Database</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
 	      	<div class="collapse navbar-collapse" id="navbarToggle">
 		        <div class="navbar-nav mr-auto">
 		          <a class="nav-item nav-link" href="{% url 'students' %}">Students</a>
-		          <a class="nav-item nav-link" href="{% url 'school-home' %}">Instructors</a>
-		          <a class="nav-item nav-link" href="{% url 'school-home' %}">Courses</a>
-		          <a class="nav-item nav-link" href="{% url 'school-home' %}">Departments</a>
-		          <a class="nav-item nav-link" href="{% url 'school-home' %}">Students Fee</a>
+		          <a class="nav-item nav-link" href="{% url 'staff' %}">Instructors</a>
+		          <a class="nav-item nav-link" href="{% url 'courses' %}">Courses</a>
+		          <a class="nav-item nav-link" href="{% url 'departments' %}">Departments</a>
+		 
 	      	</div>
     		</div>
   		</nav>

@@ -1,0 +1,13 @@
+{% extends "management/base.html" %}
+{% load render_table from django_tables2 %}
+
+ {% block content %}
+ 	<body>
+      &nbsp  &nbsp
+      <a href = "{% url 'courseList' %}">Course List </a>
+
+	<!--{% for x in table %}
+		{{ x.name}}
+	    {{ x.studentId}}
+	{% endfor %}-->
+{% endblock content %}

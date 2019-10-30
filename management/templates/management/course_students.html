@@ -1,0 +1,46 @@
+{% extends "management/base.html" %}
+{% load render_table from django_tables2 %}
+{% block content %}
+<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	       <th>Course name</th>
+	      <th>Course Id</th>
+	      <th>Instructor Id</th>
+	      <th>Instructor Name</th>
+	   </tr>
+	 </thead>
+	 <tbody>
+	   {% for course in course %}
+	    <tr>
+	      <td>{{ course.course_name }}</td>
+	      <td>{{ course.courseId }}</td>
+	      <td>{{ course.instructor }}</td>
+	      <td>{{ course.name }}</td>
+	   </tr>
+	 {% endfor %}
+	</tbody>
+	<b> List of Students For Course  </b>
+	</table>
+	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	       <th>Student name</th>
+	      <th>Studnet Id</th>
+	      <th>Department</th>
+	      <th>GPA</th>
+	   </tr>
+	 </thead>
+	 <tbody>
+	   {% for user in students %}
+	    <tr>
+	      <td>{{ user.name }}</td>
+	      <td>{{ user.studentId }}</td>
+	      <td>{{ user.dept_id}}</td>
+	      <td>{{ user.gpa }}</td>
+	   </tr>
+	 {% endfor %}
+	</tbody>
+	</table>
+
+{% endblock content %}

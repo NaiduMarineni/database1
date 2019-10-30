@@ -2,9 +2,74 @@
 {% load render_table from django_tables2 %}
 
  {% block content %}
- 	{% render_table table %}
-	<!--{% for x in table %}
-		{{ x.name}}
-	    {{ x.studentId}}
-	{% endfor %}-->
+ 	<head> Select Department </head>
+	<form method="post">{% csrf_token %}
+		 <select name = 'DepartmentFilter'>
+		 	<option value='ALL'> ALL</option>
+		 	{% for dept in depts %}
+		  	<option value={{dept}}>{{dept}}</option>
+			{%endfor%}
+
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+
+ 	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	       <th>Student name</th>
+	      <th>Studnet Id</th>
+	      <th>Department</th>
+	   </tr>
+	 </thead>
+	 <tbody>
+	   {% for user in users %}
+	    <tr>
+	      <td>{{ user.name }}</td>
+	      <td>{{ user.studentId }}</td>
+	      <td>{{ user.dept }}</td>
+	      <td> <a href = "{% url 'get_std_courses' studentId=user.studentId %}">Get Grades </a> </td>
+	   </tr>
+	 {% endfor %}
+	</tbody>
+	</table>
+
+	{% if users.has_other_pages %}
+    <ul class="pagination">
+	  {% if users.has_previous %}
+	    <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+	  {% else %}
+	    <li class="disabled"><span>&laquo;</span></li>
+	  {% endif %}
+	  {% for i in users.paginator.page_range %}
+	    {% if users.number == i %}
+	       <li class="active"><span>{{ i }}&nbsp <span class="sr-only">(current)</span> 
+	  .     </span></li>
+	  {% else %}
+	    <li><a href="?page={{ i }}">{{ i }}&nbsp</a></li>
+	  {% endif %}
+	{% endfor %}
+	{% if users.has_next %}
+	  <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+	     {% else %}
+	     <li class="disabled"><span>&raquo;</span></li>
+	    {% endif %}
+	 </ul>
+ {% endif %}
+
+ 	<!--<table style="width:100%">
+  	  <tr>
+	    <th>Student Name</th>
+	    <th>StudentId</th>
+	    <th>Department</th>
+	  </tr>
+	  {% for entry in table %}
+	  	<tr>
+	    <td>{{entry.name}}</td>
+	    <td>{{entry.studentId}}</td>
+	    <td>{{entry.dept}}</td>
+	  </tr>
+	{% endfor %}
+	</table> -->
+
 {% endblock content %}

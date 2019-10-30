@@ -1,0 +1,39 @@
+{% extends "management/base.html" %}
+ {% block content %}
+ 	<b> Showing Grades for  </b>
+ 	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	       <th>Student name</th>
+	      <th>Studnet Id</th>
+	      <th>Department</th>
+	   </tr>
+	 </thead>
+	 <tbody>
+	   {% for user in std_dtls %}
+	    <tr>
+	      <td>{{ user.name }}</td>
+	      <td>{{ user.studentId }}</td>
+	      <td>{{ user.dept }}</td>
+	   </tr>
+	 {% endfor %}
+	</tbody>
+	</table>
+
+ 	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	       <th>Course Id</th>
+	      <th>Grade</th>
+	   </tr>
+	 </thead>
+	 <tbody>
+	   {% for grade in grades %}
+	    <tr>
+	      <td>{{ grade.course}}</td>
+	      <td>{{ grade.gpa }}</td>
+	   </tr>
+	 {% endfor %}
+	</tbody>
+	</table>
+{% endblock content %}
